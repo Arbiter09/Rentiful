@@ -1,0 +1,221 @@
+/* ─────────────────────────  globals.css  ───────────────────────── */
+
+/* 1 ▸ Load Tailwind (v4 no longer needs separate @tailwind directives) */
+@import "tailwindcss";
+
+/* 2 ▸ Load third-party plugins that still require JS logic */
+@import "tailwind-animate";
+
+/* 3 ▸ Design-tokens — everything that used to live in tailwind.config.ts */
+@theme {
+  /* ---------- Core palette ---------- */
+  --color-background: 0 0% 98%;
+  --color-foreground: 222.2 84% 4.9%;
+
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222.2 84% 4.9%;
+
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 222.2 84% 4.9%;
+
+  /* ---------- Primary scale ---------- */
+  --color-primary-50:  #fcfcfc;
+  --color-primary-100: #f1f1f2;
+  --color-primary-200: #e0e0e2;
+  --color-primary-300: #c7c7cc;
+  --color-primary-400: #a8a8af;
+  --color-primary-500: #82828b;
+  --color-primary-600: #57575f;
+  --color-primary-700: #27272a;
+  --color-primary-800: #111113;
+  --color-primary-900: #040405;
+  --color-primary-950: #000000;
+
+  /* ---------- Secondary scale ---------- */
+  --color-secondary-50:  #fefcfc;
+  --color-secondary-100: #fdf2f2;
+  --color-secondary-200: #fae1e1;
+  --color-secondary-300: #f6c9c9;
+  --color-secondary-400: #f1abab;
+  --color-secondary-500: #eb8686;
+  --color-secondary-600: #e45a5a;
+  --color-secondary-700: #dc2828;
+  --color-secondary-800: #7c1414;
+  --color-secondary-900: #400a0a;
+  --color-secondary-950: #2c0707;
+
+  /* ---------- Utility tokens ---------- */
+  --color-muted:               hsl(var(--muted));
+  --color-muted-foreground:    hsl(var(--muted-foreground));
+  --color-accent:              hsl(var(--accent));
+  --color-accent-foreground:   hsl(var(--accent-foreground));
+  --color-destructive:         hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border:  hsl(var(--border));
+  --color-input:   hsl(var(--input));
+  --color-ring:    hsl(var(--ring));
+
+  /* ---------- Chart palette (add real HSL values as needed) ---------- */
+  --chart-1: 210 100% 60%;   /* <- placeholder */
+  --chart-2: 160  80% 45%;
+  --chart-3:  45  90% 55%;
+  --chart-4: 350  80% 60%;
+  --chart-5: 280  70% 55%;
+
+  /* ---------- Sidebar palette ---------- */
+  --color-sidebar-background:      0 0% 98%;
+  --color-sidebar-foreground:      240 5.3% 26.1%;
+  --color-sidebar-primary:         240 5.9% 10%;
+  --color-sidebar-primary-foreground: 0 0% 98%;
+  --color-sidebar-accent:          240 4.8% 95.9%;
+  --color-sidebar-accent-foreground: 240 5.9% 10%;
+  --color-sidebar-border:          220 13% 91%;
+  --color-sidebar-ring:            217.2 91.2% 59.8%;
+
+  /* ---------- Radii ---------- */
+  --radius-md: 0.5rem;
+}
+
+/* 4 ▸ Dark-mode overrides (same palette, flipped values) */
+.dark {
+  @theme {
+    --color-background: 222.2 84% 3.9%;
+    --color-foreground: 210 40% 98%;
+
+    --color-card:            222.2 84% 4.9%;
+    --color-card-foreground: 210 40% 98%;
+
+    --color-popover:            222.2 84% 4.9%;
+    --color-popover-foreground: 210 40% 98%;
+
+    /* Dark-mode primary stays saturated/lighter */
+    --color-primary-500: 217.2 91.2% 59.8%;
+    --color-primary-foreground: 222.2 47.4% 11.2%;
+
+    --color-secondary:            217.2 32.6% 17.5%;
+    --color-secondary-foreground: 210 40% 98%;
+
+    --color-muted:            217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
+
+    --color-accent:            217.2 32.6% 17.5%;
+    --color-accent-foreground: 210 40% 98%;
+
+    --color-destructive:            0 62.8% 30.6%;
+    --color-destructive-foreground: 210 40% 98%;
+
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input:  217.2 32.6% 15.5%;
+    --color-ring:   224.3 76.3% 48%;
+
+    --color-sidebar-background:         240 5.9% 10%;
+    --color-sidebar-foreground:         240 4.8% 95.9%;
+    --color-sidebar-primary:            224.3 76.3% 48%;
+    --color-sidebar-primary-foreground: 0 0% 100%;
+    --color-sidebar-accent:             240 3.7% 15.9%;
+    --color-sidebar-accent-foreground:  240 4.8% 95.9%;
+    --color-sidebar-border:             240 3.7% 15.9%;
+    --color-sidebar-ring:               217.2 91.2% 59.8%;
+  }
+}
+
+/* 5 ▸ Base element resets and utility shortcuts */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root,
+  .app {
+    height: 100%;
+    width: 100%;
+    @apply text-sm bg-background text-foreground;
+  }
+}
+
+/* ---------- Layout helpers ---------- */
+.dashboard-container { @apply pt-8 pb-5 px-8; }
+
+/* ---------- Mapbox pop-ups ---------- */
+.mapboxgl-popup-content         { @apply bg-primary-700 rounded-md py-2 px-3; }
+.mapboxgl-popup-anchor-top    .mapboxgl-popup-tip { @apply border-b-primary-700; }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip { @apply border-t-primary-700; }
+.mapboxgl-popup-anchor-left   .mapboxgl-popup-tip { @apply border-r-primary-700; }
+.mapboxgl-popup-anchor-right  .mapboxgl-popup-tip { @apply border-l-primary-700; }
+
+.marker-popup        { @apply flex items-center justify-between gap-3 bg-primary-700 text-white m-0 p-0; }
+.marker-popup-image  { @apply w-10 h-10 object-cover bg-white rounded-md; }
+.marker-popup-price  { @apply text-sm font-semibold text-primary-200; }
+.marker-popup-title  { @apply cursor-pointer hover:underline hover:text-blue-300 focus:outline-none; }
+.marker-popup-price-unit { @apply text-xs font-normal text-primary-500; }
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar               { width: 5px; }
+::-webkit-scrollbar-track         { background: transparent; }
+::-webkit-scrollbar-thumb         { @apply bg-primary-200 rounded-[3px]; }
+::-webkit-scrollbar-thumb:hover   { @apply bg-primary-300; }
+
+/* ---------- Amplify UI overrides ---------- */
+[data-amplify-authenticator] {
+  --amplify-components-button-primary-background-color: hsl(var(--color-primary-500));
+  --amplify-components-button-primary-hover-background-color: hsl(var(--color-primary-500) / 0.9);
+  --amplify-components-button-border-radius: var(--radius-md);
+  --amplify-components-fieldcontrol-border-radius: var(--radius-md);
+}
+
+[data-amplify-authenticator][data-variation="default"] { height: 100%; padding: 2rem !important; }
+
+[data-amplify-authenticator] [data-amplify-router] {
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 400px !important;
+  margin: 0 auto;
+}
+
+[data-amplify-authenticator] [data-amplify-container] {
+  border-radius: var(--radius-md);
+  padding: 2rem !important;
+  border: 1px solid hsl(var(--color-border));
+}
+
+[data-amplify-authenticator] [data-amplify-form] { padding: 0 !important; }
+[data-amplify-authenticator] .amplify-tabs__list { display: none; }
+
+[data-amplify-authenticator] .amplify-button--primary {
+  @apply w-full h-11 mt-4 font-medium text-sm;
+  background-color: hsl(var(--color-primary-500)) !important;
+  color: hsl(var(--color-primary-foreground)) !important;
+}
+
+[data-amplify-authenticator] .amplify-button--primary:hover {
+  background-color: hsl(var(--color-primary-500) / 0.8) !important;
+}
+
+[data-amplify-authenticator] .amplify-field-group__control { border-color: hsl(var(--color-input)); }
+[data-amplify-authenticator] .amplify-field-group__control:focus-within {
+  border-color: hsl(var(--color-ring)) !important;
+  box-shadow: 0 0 0 1px hsl(var(--color-ring)) !important;
+}
+
+[data-amplify-authenticator] .amplify-field__show-password { color: hsl(var(--color-muted-foreground)); }
+[data-amplify-authenticator] .amplify-label { @apply text-sm font-medium text-foreground; }
+
+[data-amplify-authenticator] .amplify-select {
+  border-color: hsl(var(--color-input));
+  border-radius: var(--radius-md);
+  height: 2.5rem;
+  @apply text-sm;
+}
+
+[data-amplify-authenticator] .amplify-text--error { color: #ff0000; }
+
+/* ---------- Sonner toast ---------- */
+[data-close-button="true"] { @apply bg-background border-border text-foreground hover:bg-muted; }
+
+/* ─────────────────────────  end globals.css  ───────────────────────── */
