@@ -10,19 +10,6 @@ A full-stack, production-ready real estate management platform built with modern
 
 ---
 
-## 🧭 Table of Contents
-
-- [Features](#features)
-- [Architecture Overview](#architecture-overview)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [AWS Deployment](#aws-deployment)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
----
 
 ## 🚀 Features
 
