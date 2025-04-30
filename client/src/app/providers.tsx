@@ -7,9 +7,9 @@ import Auth from "./(auth)/authProvider";
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <StoreProvider>
-      <Authenticator>
+      <Authenticator.Provider>
         <Auth>{children}</Auth>
-      </Authenticator>
+      </Authenticator.Provider>
     </StoreProvider>
   );
 };
