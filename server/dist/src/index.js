@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
     res.send("This is home route");
 });
 app.use("/tenants", (0, authMiddleware_1.authMiddleware)(["tenant"]), tenantRoutes_1.default);
-app.use("/manager", (0, authMiddleware_1.authMiddleware)(["manager"]), managerRoutes_1.default);
+app.use("/managers", (0, authMiddleware_1.authMiddleware)(["manager"]), managerRoutes_1.default);
 /* SERVER */
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
