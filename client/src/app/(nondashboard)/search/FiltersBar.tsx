@@ -122,7 +122,7 @@ const FiltersBar = () => {
             className="w-40 rounded-l-xl rounded-r-none border-primary-400 border-r-0"
           />
           <Button
-            // onClick={handleLocationSearch}
+            onClick={handleLocationSearch}
             className={`rounded-r-xl rounded-l-none border-l-none border-primary-400 shadow-none 
                 border hover:bg-primary-700 hover:text-primary-50`}
           >
