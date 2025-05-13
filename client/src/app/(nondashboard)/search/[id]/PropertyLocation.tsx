@@ -19,7 +19,7 @@ const PropertyLocation = ({ propertyId }: PropertyDetailsProps) => {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current!,
-      style: "mapbox://styles/majesticglue/cm6u301pq008b01sl7yk1cnvb",
+      style: "mapbox://styles/jas09/cmaiudhbh00gy01s881twa391",
       center: [
         property.location.coordinates.longitude,
         property.location.coordinates.latitude,
@@ -48,7 +48,7 @@ const PropertyLocation = ({ propertyId }: PropertyDetailsProps) => {
 
   return (
     <div className="py-16">
-      <h3 className="text-xl font-semibold text-primary-800 dark:text-primary-100">
+      <h3 className="text-xl font-semibold !text-primary-800 dark:text-primary-100">
         Map and Location
       </h3>
       <div className="flex justify-between items-center text-sm text-primary-500 mt-2">
